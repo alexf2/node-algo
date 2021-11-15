@@ -43,15 +43,15 @@ export function getFiboRecursive(nFirst) {
   return res;
 }
 
-export function *getFiboGeneratorRecursive(count, prev = 0, current = 1) {
-	if (isNaN(count) || count < 0)
-  	    throw Error(ERR_MSG);
+export function* getFiboGeneratorRecursive(count, prev = 0, current = 1) {
+    if (isNaN(count) || count < 0)
+        throw Error(ERR_MSG);
 
-	if (count > 0) {
+    if (count > 0) {
         yield prev;
-        yield *getFiboGeneratorRecursive(count - 1, current, prev + current);
+        yield* getFiboGeneratorRecursive(count - 1, current, prev + current);
     } else
-  	    return prev;
+        return prev;
 }
 
 export function *getFiboGenerator(count = 0) {
