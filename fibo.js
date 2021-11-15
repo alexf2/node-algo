@@ -44,9 +44,8 @@ export function getFiboRecursive(nFirst) {
 }
 
 export function *getFiboGeneratorRecursive(count, prev = 0, current = 1) {
-	if (isNaN(count) || count < 0) {
-  	throw Error(ERR_MSG);
-  }
+	if (isNaN(count) || count < 0)
+  	    throw Error(ERR_MSG);
 
 	if (count > 0) {
         yield prev;
