@@ -51,9 +51,8 @@ export function *getFiboGeneratorRecursive(count, prev = 0, current = 1) {
 	if (count > 0) {
         yield prev;
         yield *getFiboGeneratorRecursive(count - 1, current, prev + current);
-  } else {
+    } else
   	    return prev;
-  }
 }
 
 export function *getFiboGenerator(count = 0) {
