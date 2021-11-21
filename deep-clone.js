@@ -1,3 +1,6 @@
+/*
+    Реализовать глубокое клонирование объекта.
+*/
 import isEqual from 'lodash/isEqual.js';
 
 const isScalar = obj => {

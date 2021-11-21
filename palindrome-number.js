@@ -1,3 +1,6 @@
+/*
+    Проверить, является ли число палиндромом.
+*/
 export const palindromeNumber = value => {
     if (typeof value !== 'number' || value < 0 || value % 10 === 0 && !!value)
         return false;

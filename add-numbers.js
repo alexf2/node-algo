@@ -1,4 +1,7 @@
-String.prototype.reverse_string = function() {return this.split("").reverse().join("");}
+/*
+    Даны дван неотрицательеых целых числа. Надо их сложить в виде строк (как в столбик).
+ */
+String.prototype.reverse_string = function() {return this.split('').reverse().join('');}
 
 const getDigint = (arr, index) => {
     const d = parseInt(index >= arr.length ? 0 : arr[index]);

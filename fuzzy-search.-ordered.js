@@ -1,4 +1,7 @@
-// подстрока str должна быть в dataStr в нужном порядке, но не обязательно слитно
+/*
+    Нечёткий поиск.
+    Подстрока str должна быть в dataStr в нужном порядке, но не обязательно слитно.
+*/
 export const fuzzySearchOrdered = (str, dataStr) => {
     if (typeof str !== 'string' || !str || typeof dataStr !== 'string' || !dataStr)
         return;

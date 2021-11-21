@@ -1,4 +1,6 @@
-// подстрока str должна быть в dataStr в нужном порядке, но не обязательно слитно
+/*
+    Реализовать удалене дубликатов в отсортированном массиве чисел.
+*/
 export const dedupNumbers = nums => {
     if (!nums || !Array.isArray(nums) || !nums.length)
         return nums;

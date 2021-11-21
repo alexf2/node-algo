@@ -1,3 +1,6 @@
+/*
+    Реализовать двоичный поиск числа в отсортированном по возрастанию массиве чисел.
+ */
 export const binarySearch = (arr, value) => {
     if (!arr || !Array.isArray(arr) || !arr.length)
         return -1;

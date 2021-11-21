@@ -1,3 +1,7 @@
+/*
+    Объединить два отсортированных по возрастанию смассивов так, чтобы получился массив, упорядоченный по возрастанию.
+*/
+
 import {mergeNArrays} from './merge-n-arrays.js';
 
 export const mergeTwoArrays = (arr1, arr2) => {

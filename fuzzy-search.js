@@ -1,3 +1,8 @@
+/*
+    Нечёткий поиск.
+    Подстрока str должна быть в dataStr слитно, но в произвольном порядке символов.
+*/
+
 export const fuzzySearch = (str, dataStr) => {
     if (typeof str !== 'string' || !str || typeof dataStr !== 'string' || !dataStr)
         return;

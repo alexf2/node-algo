@@ -1,3 +1,6 @@
+/*
+    Проверить, ячвляется ли слово палиндромом.
+*/
 export const palindromeWords = value => {
     if (typeof value !== 'string' || !value)
         return false;

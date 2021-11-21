@@ -1,3 +1,7 @@
+/*
+    Вернуть K наиболее частых слов.
+*/
+
 export const mostFrequentWords = (str, k) => {
     if (!str || typeof str !== 'string' || !str.trim())
         return [];

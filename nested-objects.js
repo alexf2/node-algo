@@ -1,3 +1,7 @@
+/*
+    Построить по шаблону объект с вложенными полями-объектами.
+*/
+
 export const nestingObjects = str => {
     if (!str || typeof str !== 'string' || !str.length)
         return {};

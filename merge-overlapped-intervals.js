@@ -1,3 +1,9 @@
+/*
+    Слияние отрезков: (дубликат)
+
+    Вход: [1, 3] [100, 200] [2, 4]
+    Выход: [1, 4] [100, 200]
+ */
 export const mergeOverlappedIntervals = intervals => {
     if (!intervals || !Array.isArray(intervals) || !intervals.length)
         return [];

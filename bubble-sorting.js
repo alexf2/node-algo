@@ -1,3 +1,7 @@
+/*
+    Реализовать пузырьковую сортировку по возрастанию массива чисел.
+ */
+
 export const bubbleSorting = arr => {
     if (!Array.isArray(arr) || !arr.length)
         return arr;

@@ -1,3 +1,6 @@
+/*
+    Проверить, являются переданные строки S и T анаграммами.
+*/
 export const validAnagram = (s, t) => {
     if (!s || !t || s.length !== t.length)
         return false;

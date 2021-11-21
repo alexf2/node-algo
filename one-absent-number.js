@@ -1,3 +1,6 @@
+/*
+    В массиве целых чисел, где чила идут подряд, возрастая на '1', отсутсвует одно число. Найти его.
+*/
 export const oneAbsentNumber = arr => {
     if (!arr || !Array.isArray(arr) || !arr.length)
         return null;

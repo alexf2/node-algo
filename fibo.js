@@ -1,5 +1,9 @@
 // 0, 1, 1, 2, 3, 5, 8, 13
 
+/*
+    Реализовать генерацию первых N чисел Фибоначчи.
+*/
+
 export const ERR_MSG = 'Число значений должно быть неотрицательным';
 
 export const getFiboRegular = nFirst => {
@@ -7,7 +11,7 @@ export const getFiboRegular = nFirst => {
         throw Error(ERR_MSG);
     }
 
-    if (nFirst === 0) {
+    if (!nFirst) {
         return [];
     }
   
