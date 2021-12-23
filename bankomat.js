@@ -74,10 +74,10 @@ const getCash = (amount, banknotes) => {
 };
 
 function getMoney(amount, limits) {
-    const banknotes = limits ? limits2Banknotes(limits) : BANKNOTES;    
-
     if (typeof amount !== 'number' || isNaN(amount) || amount < 0)
         throw new Error('Bad amount value');
+
+    const banknotes = limits ? limits2Banknotes(limits) : BANKNOTES;    
     
     const outCash = getCash(amount, banknotes);
     console.log(getCashSumm(outCash));
