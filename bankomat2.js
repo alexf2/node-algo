@@ -1,4 +1,11 @@
 const BANKNOTE_NOMINALS_ORDERED = [5000, 1000, 500, 100, 50];
+const UNLIMITED_BANKNOTES = {
+  [5000]: -1,
+  [1000]: -1,
+  [500]: -1,
+  [100]: -1,
+  [50]: -1,
+};
 
 class CashMachine {
     constructor(banknotes) {
@@ -30,7 +37,7 @@ class CashMachine {
             ...this.moneyStorage,
 
             hasBanknote: function(nominal) {
-                return this[nominal] > 0;
+                return this[nominal] !== 0;
             },
             takeBanknote: function(nominal) {
                 if (this[nominal] > 0) {
@@ -75,6 +82,7 @@ class CashMachine {
         return result;
     }
 }
+
 
 const test1 = () => {
     const cm = new CashMachine({
