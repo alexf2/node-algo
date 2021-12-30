@@ -1,7 +1,7 @@
 console.log('A');
 setTimeout(() => console.log('tt'), 0);
 
-const p = Promise.reject().then(
+const p = Promise.resolve().then(
     () => console.log('1'),
     () => console.log('2'),
 )
