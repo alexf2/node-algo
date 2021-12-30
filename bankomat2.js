@@ -41,7 +41,7 @@ class CashMachine {
             },
             takeBanknote: function(nominal) {
                 if (this[nominal] > 0) {
-                    this[nominal] = this[nominal] - 1;
+                    this[nominal]--;
                     return true;
                 }
                 return false;
@@ -72,7 +72,7 @@ class CashMachine {
         let acc = 0;
         for (const nominal of BANKNOTE_NOMINALS_ORDERED) {
             while (snapshotStorage.hasBanknote(nominal) && acc + nominal <= amount)
-                result[nominal] = result[nominal] + 1, snapshotStorage.takeBanknote(nominal), acc += nominal;
+                result[nominal]++, snapshotStorage.takeBanknote(nominal), acc += nominal;
         }
 
         if (acc !== amount)
@@ -101,3 +101,21 @@ const test1 = () => {
 }
 
 test1();
+
+const test2 = () => {
+    const cm = new CashMachine({
+        [5000]: 2,
+        [1000]: 12,
+        [500]: 1,
+        [100]: 20,
+        [50]: 10,
+    });
+
+    [25000].forEach(amt => {
+        console.log(cm.totalMoneyAmount);
+        console.log(cm.wihdrawMoney(amt));
+        console.log(cm.totalMoneyAmount);
+    });
+}
+
+test2();
