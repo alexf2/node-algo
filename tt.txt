@@ -1,0 +1,66 @@
+Типы js:
+    value-типы: немутабельны
+
+    null
+    undefined
+    string 
+    number
+    boolean
+    BigInt
+    Symbol
+    
+    ссылочные типы: мутабельны
+
+    object
+    array
+    object --> function
+
+примечательно, что у function есть length
+
+Однако, у V-типов есть и методы. Это достигается за счёт оборачивания в объект.
+
+
+Webpack --> Vite
+
+Shadow DOM vs Virtual DOM: SD - это для инкапсуляции DOM Web-компонентов, а VD - это сеть, представляющая DOM в памяти JS.
+
+Map vs Object: у object ключ только строка или Symbol, а перебирать элементы можно с сохранением порядка только через получение массива Object.keys() или values().
+    Map позволяет любой ключ и легко перебирается с сохранением порядка: через for of или forEach. Ещё у Map есть size.
+    Map легко создаётся из массива и преобразуется в массив: [...map].
+
+
+CORS - cross origin resource sharing.
+JWT - Json web token.
+
+Event Loop: https://www.youtube.com/watch?v=zDlg64fsQow
+
+Вёрстка:
+    - резивная: одинаковый UI на всех устройствах, но растягивающийся. Размеры задаются в %.
+    - адаптивная: интерфейс разный для разных устройств. Делается через Media Query: (320, 768, 1024, т.д.).
+    - респонсивная: это сочетание первых двух. Наиболее сложный вариант.
+    - отдельные URL, где версии сайта для Web и для мобильных устройств.
+
+<style>
+#temnyi, #svetlyi { width: 430px; }
+
+@media (max-width: 1220px) {
+  #temnyi, #svetlyi { width: 380px; }
+}
+
+@media (max-width: 1120px) {
+  #temnyi, #svetlyi { width: 325px; }
+}
+
+@media (max-width: 680px) {
+  #temnyi, #svetlyi { width: 200px; }
+}
+</style>
+
+
+Паттерны: пораждающие (фабрика, Singleton), структурные (адаптер, декоратор, фасад, proxy) и поведенческие (итератор, command, state, visitor, strategy).
+
+В проектах использую: Docker, Python (Django, Flask, FastAPI, Kafka, Redis, Multiprocessing, Asyncio, PyQT, PostgreSQL)
+    Python, Аsyncio,Bottle, SqlAlchemy, PostgreSQL, Redis, ZeroMQ, ClickHouse.
+
+!!! https://hackajob.com/talent
+

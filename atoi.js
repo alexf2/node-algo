@@ -10,7 +10,7 @@ const NINE_CODE = '9'.charCodeAt(0);
 
 export const atoi = str => {
     if (!str || typeof str !== 'string' || !str.length)
-        return;
+        return NaN;
     
     let sign = 1;
     let hasSign = false;
@@ -44,6 +44,30 @@ export const atoi = str => {
     return sign * view.slice(0, count).reduce((p, c, i) => p * 10 + c, 0);
 }
 
+function atoi2(str) {
+    if (typeof str !== 'string' || !str?.length)
+        return NaN;
+
+    let result = 0, sign = 1, started = false
+    for (let i = 0; i < str.length; ++i) {
+        const c = str.charCodeAt(i)
+        if (!started) {
+            if (c === MINUS_CODE) {
+                sign = -1
+                continue
+            }
+        }
+        if (c >= ZERO_CODE && c <= NINE_CODE) {
+            started = true
+            result = result * 10 + c - ZERO_CODE
+        }
+        else if(started)
+            break
+    }
+
+    return result * sign
+}
+
 function test() {
     [
         undefined,
@@ -61,7 +85,10 @@ function test() {
         '  -87654',
     ].forEach((str, i) => {
         const val = atoi(str);
-        console.log(`${i + 1}:`, val, ' / ', parseInt(str) === val);
+        const val2 = atoi2(str);
+        const valTrue = parseInt(str)
+
+        console.log(`${i + 1}:`, val, val2, ' / ', valTrue === val || isNaN(valTrue) && isNaN(val));
     });
 }
 

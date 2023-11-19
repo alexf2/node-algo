@@ -29,6 +29,25 @@ export const mergeTwoArrays = (arr1, arr2) => {
     return result;
 }
 
+function mergeArrays2(arr1, arr2) {
+    if (!arr1?.length)
+        return arr2
+    else if (!arr2?.length)
+        return arr1
+
+    let i = arr1.length - 1, j = arr2.length - 1, k = arr1.length + arr2.length - 1
+    const result = arr1.slice(0)
+
+    while (k >= 0) {
+        if (j < 0 || (i >=0 && result[i] > arr2[j]))
+            result[k--] = result[i--]
+        else
+            result[k--] = arr2[j--]
+    }
+
+    return result
+}
+
 function test() {
     [
         [undefined, undefined], // 1
@@ -57,7 +76,7 @@ function test() {
         [[1, 8], [5, 6, 7]], // 24
         [[1, 8, 9], [5, 6, 7]], // 25
     ].forEach(([a, b], n) => {
-        console.log(`${n + 1}: `, mergeTwoArrays(a, b));
+        console.log(`${n + 1}: `, mergeTwoArrays(a, b), mergeArrays2(a, b));
         console.log(`N ${n + 1}: `, mergeNArrays(a, b));
      });
 

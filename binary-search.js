@@ -22,6 +22,35 @@ export const binarySearch = (arr, value) => {
     return -1;
 }
 
+function biSearch(sortedArr, a) {
+    if (!Array.isArray(sortedArr) || sortedArr.length < 1)
+  	    return -1
+    
+    const {length} = sortedArr
+    
+    if (length === 1)
+  	    return sortedArr[0] === a ? 0 : -1
+    
+    let left = 0, right = length - 1
+    while (left <= right) {
+        const i = (right + left) / 2 >>> 0
+        
+        const currValue = sortedArr[i]
+        if (currValue === a)
+            return i
+        
+        if (a < currValue) 
+            right = i - 1
+        else 
+            left = i + 1
+        
+    } 
+    
+    return -1
+}
+
+
+
 function test() {
     [
         [], // -1 //1
@@ -48,6 +77,8 @@ function test() {
         [[-1, 5, 10, 11, 12, 15, 19, 20, 21], 0], //-1 //22
     ].forEach(([arr, val], i) => {
         console.log(`${i + 1}:`, binarySearch(arr, val));
+        console.log(`${i + 1}:`, biSearch(arr, val));
+        console.log()
     });
 }
 

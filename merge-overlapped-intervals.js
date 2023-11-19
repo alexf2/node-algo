@@ -22,10 +22,39 @@ export const mergeOverlappedIntervals = intervals => {
     return merged;
 }
 
+function mergeIntervals2(arr) {
+	if (!Array.isArray(arr))
+  	throw new Error('Bad argument')
+    
+  if (arr.length < 2)
+  	return arr
+  
+  const sourceArray = arr.slice().sort((a, b) => a[0] - b[0])
+ 
+  const result = []
+  let j = 0
+  for (const item of sourceArray) {
+  	const [start, end] = item
+  	if (!result.length) {
+    	result[0] = [start, end]
+      continue;
+    }
+    
+    if (result[j][1] >= start) {
+    	result[j][1] = Math.max(result[j][1], end)
+    } else {
+    	result[++j] = [start, end]
+    }
+  }
+  
+  return result
+}
+
+
 function test() {
     [
-        undefined,
         [],
+        [[0, 2], [1, 2], [3, 3]],
         [[2, 3], [4, 5], [6, 7], [8, 9], [1, 10]],
         [[1, 5], [-2, 0], [10, 12]],
         [[2, 5], [3, 7], [0, 1]],
@@ -33,6 +62,7 @@ function test() {
         [[5, 8], [4, 5], [7, 11], [9, 10], [11, 20]],
     ].forEach((interval, i) => {
         console.log(`${i + 1}:`, mergeOverlappedIntervals(interval));
+        console.log(mergeIntervals2(interval))
     });
 }
 

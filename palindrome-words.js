@@ -14,6 +14,20 @@ export const palindromeWords = value => {
     return true;
 }
 
+function isPolindrome2(str) {
+	if (typeof str !== 'string')
+  	str = String(str)
+  if (str.length < 2)
+  	return true
+    
+  for (let i = 0, j = str.length - 1; i <= j; ++i, --j)
+  	if (str[i] !== str[j])
+    	return false
+      
+  return true
+}
+
+
 function test() {
     [
         undefined,
@@ -27,7 +41,7 @@ function test() {
         'xz12zx',
         '3123',
     ].forEach((val, i) => {
-        console.log(`${i + 1}:`, ` ${val}: `, palindromeWords(val));
+        console.log(`${i + 1}:`, ` ${val}: `, palindromeWords(val), isPolindrome2(val));
     });
 }
 

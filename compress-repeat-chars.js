@@ -18,17 +18,44 @@ export const compressChart = str => {
         if (prevChar === c)
             ++count;
         else {
-            result.push(count > 0 ? `${count + 1}${c}` : c);
+            result.push(count > 0 ? `${count}${c}` : c);
             count = 0;
         }
         prevChar = c;
     }
 
     if (count > 0)
-        result.push(`${count + 1}`);
+        result.push(`${count}`);
 
     return result.join('');
 }
+
+function compressChart2 (str) {
+	if (!str || typeof str !== 'string' || str.length < 2) 
+  	    return str
+
+	let count = 0, prevChar, result = []
+    function addPart(ch) {
+        result.push(count === 0 ? ch : `${ch}${count}`)
+    }
+
+    for (const c of str) {
+  	    if (c === prevChar)
+    	    count++
+        else {    
+            addPart(prevChar)
+    
+            count = 0
+            prevChar = c
+        }
+  }
+  
+  addPart(prevChar)
+  
+  return result.join('')
+}
+
+
 
 function test() {
     [
@@ -47,7 +74,7 @@ function test() {
         'bbZcc', // 12
         'abccccc', // 13
         'a bbbcxxx1h6f1dd', // 14
-    ].forEach((str, i) => console.log(`${i + 1}: ${str} --> ${compressChart(str)}`));
+    ].forEach((str, i) => console.log(`${i + 1}: ${str} --> ${compressChart(str)}, ${compressChart2(str)}`));
 }
 
 if (process.env.NODE_ENV !== 'test')

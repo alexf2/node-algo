@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>���� � �����</title>
+</head>
+<body>
+    <script>
+        let date = new Date();
+        console.log(date);
+	    console.log(this);
+
+        const obj = {
+            a: 1,
+            b: function() {
+                console.log('2', this)
+            },
+            c: () => {
+                console.log('3', this)
+            }
+        }
+
+        obj.b()
+        obj.c()
+
+        function constr(a) {
+            console.log(a, this)
+        }
+
+        const o2 = new constr(10)
+    </script> 
+</body>  
+</html>
