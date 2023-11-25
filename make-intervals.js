@@ -32,9 +32,34 @@ export const makeIntervals = arr => {
     return result.join(', ');
 }
 
+function makeIntervals2(data) {
+	if (data?.length < 2 || !Array.isArray(data))
+  	return data
+
+	data.sort((a, b) => a - b)
+
+  const result = [], {length} = data
+  let startIndex = 0
+ 
+  for (let i = 1; i <= length; ++i) {
+  	const end = i === length,
+        currentValue = end ? undefined : data[i],
+        prevValue = data[i - 1]
+    
+    if (!end && currentValue - prevValue < 2) {
+    	continue
+     } else {
+     	result.push(i - startIndex === 1 ? String(prevValue) : `${data[startIndex]}-${prevValue}`)
+      startIndex = i
+     }
+  }
+
+	return result
+}
+
+
 function test() {
     [
-        undefined,
         [],
         [2],
         [2, 5, 7],
@@ -46,7 +71,7 @@ function test() {
         [1, 2, 4, 7], // 1-2, 4, 7
         
     ].forEach((arr, i) => {
-        console.log(`${i + 1}:`, arr, ' --> ', makeIntervals(arr));
+        console.log(`${i + 1}:`, arr, ' --> ', makeIntervals(arr), '-->', makeIntervals2(JSON.parse(JSON.stringify(arr))));
     });
 }
 

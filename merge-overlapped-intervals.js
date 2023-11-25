@@ -50,6 +50,26 @@ function mergeIntervals2(arr) {
   return result
 }
 
+function mergeIntervals3(arr) {
+	if (!Array.isArray(arr) || arr.length < 2)
+  	return arr
+    
+  arr.sort((a, b) => a[0] - b[0])
+    
+  let prev
+  let toRemove = new Set(), i = 0
+  for (const current of arr) {
+  	if (prev && prev[1] >= current[0]) {
+    	prev[1] = Math.max(prev[1], current[1])
+      toRemove.add(i)
+    } else
+     	prev = current
+    ++i
+  }
+  
+  return arr.filter((item, i) => !toRemove.has(i))
+}
+
 
 function test() {
     [

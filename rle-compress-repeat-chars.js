@@ -6,7 +6,7 @@ RLE - компрессия
 И сгенерирует ошибку, если на вход пришла невалидная строка.
 Пояснения: Если символ встречается 1 раз, он остается без изменений; Если символ повторяется более 1 раза, к нему добавляется количество повторений.
 */
-export const compressChart = str => {
+export const compressChars = str => {
     if (!str || str.length < 2)
         return str;
 
@@ -30,7 +30,7 @@ export const compressChart = str => {
     return result.join('');
 }
 
-function compressChart2 (str) {
+function compressChars2 (str) {
 	if (!str || typeof str !== 'string' || str.length < 2) 
   	    return str
 
@@ -55,6 +55,25 @@ function compressChart2 (str) {
   return result.join('')
 }
 
+function compressChars3 (str) {
+	if (typeof str !== 'string' || str.length < 2)
+  	return str
+    
+  let prev, result = [], count
+  for (let i = 0; i <= str.length; ++i) {  	
+  	const c = i === str.length ? 0 : str[i]
+
+    if (prev === c)
+      ++count
+    else {
+      prev !== undefined && result.push(count === 0 ? prev : `${prev}${String(count)}`)
+      prev = c
+      count = 0
+    }
+  }
+    
+  return result.join('')
+}
 
 
 function test() {
@@ -74,7 +93,7 @@ function test() {
         'bbZcc', // 12
         'abccccc', // 13
         'a bbbcxxx1h6f1dd', // 14
-    ].forEach((str, i) => console.log(`${i + 1}: ${str} --> ${compressChart(str)}, ${compressChart2(str)}`));
+    ].forEach((str, i) => console.log(`${i + 1}: ${str} --> ${compressChars(str)}, ${compressChars2(str)}, ${compressChars3(str)}`));
 }
 
 if (process.env.NODE_ENV !== 'test')

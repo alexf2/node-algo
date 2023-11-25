@@ -21,9 +21,30 @@ export const mergeRanges = arr => {
     return res;
 }
 
+function mergeRanges2(intervals) {
+	if (intervals?.length < 2)
+  	    return intervals || []
+    
+   const data = intervals.sort((a, b) => a[0] - b[0]), result = []
+   let j = 0
+   for (const it of data) {
+    if (!result.length) {
+        result.push(it)
+        continue
+    }
+    
+    const r = result[j]
+    if (r[1] >= it[0])
+    	r[1] = Math.max(r[1], it[1])
+     else 
+     	result.push(it), j++;
+   }
+   
+   return result
+}
+
 function test() {
     [
-        undefined,
         [],
         [[1, 3], [100, 200], [2, 4]],
         [[5, 6], [7, 8], [8, 10], [10, 11],[12, 15]],
@@ -37,7 +58,7 @@ function test() {
         [[1, 5], [10, 15], [3, 10]],
         [[1, 5], [10, 15], [3, 10], [-1, 0], [1, 1], [2, 4]],
     ].forEach((arr, i) => {
-        console.log(`${i + 1}:`, arr, ' --> ', mergeRanges(arr));
+        console.log(`${i + 1}:`, arr, ' --> ', mergeRanges(arr), '--->', mergeRanges2(JSON.parse(JSON.stringify(arr))))
     });
 }
 
