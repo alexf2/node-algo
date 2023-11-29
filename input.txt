@@ -1,5 +1,2 @@
- ab
-ab 
-abc xyz
-abc xyazc
-xyazc abc
+10 20
+heat
