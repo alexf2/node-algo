@@ -69,4 +69,4 @@ const data = [
 
 const result = await loadThrottle(data, 3)
 
-console.log('\nFinish: ', result)
+console.log('\nFinish: ', result);
