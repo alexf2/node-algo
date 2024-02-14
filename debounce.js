@@ -15,3 +15,16 @@ function debounce(callback, timeout = 3000) {
     }
 }
 
+const debounce2 = function(fn, t) {
+    const that = this
+    let timerId, arg
+
+    return function(...args) {
+        arg = args
+        if (timerId !== undefined) {
+            clearTimeout(timerId)
+        }
+
+        timerId = setTimeout(() => fn.apply(that, arg), t)
+    }
+}

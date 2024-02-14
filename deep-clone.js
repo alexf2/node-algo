@@ -35,6 +35,33 @@ export const deepClone = obj => {
     return clone;
 }
 
+const needsRecusrion = (obj) => Array.isArray(obj) || typeof obj === 'object'
+
+function clone2(obj) {
+    if(!obj)
+        return obj
+
+    if (Array.isArray(obj)) {
+        const res = [...obj]
+        for (let i = 0; i < res.length; ++i) {
+            const item = res[i]
+            if (needsRecusrion(item))
+            res[i] = clone2(item)
+        }    
+        return res
+    } else if (typeof obj === 'object') {
+        const res = {...obj}
+        for (const key in obj) {
+            const item = obj[key]
+            if (needsRecusrion(item))
+            res[key] = clone2(item)
+        }
+        return res
+    } else
+        return obj
+}
+
+
 function test() {
     [
         undefined, //1
@@ -46,7 +73,8 @@ function test() {
         [1, {a: 1}, 2, {bb: 'ss', x: {a: {text: 'test', h: 123}, m: 1278}}], //7
         {a: 222, ss: true, mm: [1, 2, 3]}, //8
     ].forEach((obj, i) => {
-        const o = deepClone(obj);
+        // const o = deepClone(obj);
+        const o = clone2(obj);
         console.log(`${i + 1}:`, o, ' --> ', isEqual(o, obj));
     });
 }

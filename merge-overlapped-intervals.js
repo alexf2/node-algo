@@ -83,6 +83,7 @@ function test() {
     ].forEach((interval, i) => {
         console.log(`${i + 1}:`, mergeOverlappedIntervals(interval));
         console.log(mergeIntervals2(interval))
+        console.log()
     });
 }
 

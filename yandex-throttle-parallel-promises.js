@@ -67,6 +67,6 @@ const data = [
     'url11',
 ]
 
-const result = await loadThrottle(data, 3)
+const result = await loadThrottle(data, 3);
 
 console.log('\nFinish: ', result);
